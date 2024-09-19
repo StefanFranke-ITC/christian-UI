@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CustomerView from "@/views/CustomerView.vue";
+import VerwaltungsView from "@/views/VerwaltungsView.vue";
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/verwaltung',
+    name: 'verwaltung',
+    component: VerwaltungsView
   },
   {
     path: '/:param',
