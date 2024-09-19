@@ -1,10 +1,10 @@
 module.exports = {
-    transpileDependencies: true,
+    transpileDependencies: [],  // Hier ein leeres Array, oder füge Abhängigkeiten hinzu, die transpiliert werden sollen
 
     devServer: {
-        port: 3000,  // Hier den Port festlegen
-        host: '0.0.0.0',  // Um den Server auf allen Netzwerkschnittstellen verfügbar zu machen
-        disableHostCheck: true,  // Optional, je nach Anforderungen
+        port: 3000,  // Den Port festlegen
+        host: '0.0.0.0',  // Stellt sicher, dass der Server auf allen Schnittstellen lauscht
+        disableHostCheck: true,  // Optional, falls du externe Verbindungen zulassen willst
     },
 
     pluginOptions: {
