@@ -1,14 +1,18 @@
-const { defineConfig } = require('@vue/cli-service')
+const {defineConfig} = require('@vue/cli-service');
+
 module.exports = defineConfig({
-  transpileDependencies: true,
+    transpileDependencies: true,
 
     devServer: {
-        port: 3000,  // Hier den Port festlegen
+        port: 3000,  // Den Port festlegen
+        host: '0.0.0.0',  // Stellt sicher, dass der Server auf allen Schnittstellen lauscht
+        disableHostCheck: true,  // Vermeidet Host-Überprüfungen (für Entwicklungsumgebungen nützlich)
+        allowedHosts: 'all',  // Erlaubt Verbindungen von beliebigen Hosts
     },
 
     pluginOptions: {
-    vuetify: {
-			// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
-		}
-  }
-})
+        vuetify: {
+            // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
+        }
+    }
+});
