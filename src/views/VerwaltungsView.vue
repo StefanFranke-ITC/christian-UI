@@ -61,10 +61,10 @@
           <v-img :src="kunde.image" height="50" width="50"/>
         </v-col>
         <v-col cols="4">
-          <v-text-field v-model="kunde.farbe1" label="farbe1"/>
+          <v-text-field v-model="kunde.farbe1" label="TextHintergrund"/>
         </v-col>
         <v-col cols="4">
-          <v-text-field v-model="kunde.farbe2" label="farbe2"/>
+          <v-text-field v-model="kunde.farbe2" label="IconUmrandung"/>
         </v-col>
         <v-col cols="4">
           <v-text-field v-model="kunde.farbe3" :disabled="true" label="farbe3"/>
@@ -175,13 +175,28 @@ export default {
       };
     },
     async speichern() {
+      // Regex zur Überprüfung, dass der kundenname nur Buchstaben und Zahlen enthält (keine Leerzeichen oder Sonderzeichen)
+      const validNamePattern = /^[a-zA-Z0-9]+$/;
+
+      if (!validNamePattern.test(this.kunde.kundenname)) {
+        alert('Der Kundenname darf keine Leerzeichen oder Sonderzeichen enthalten.');
+        return; // Beendet die Methode, falls der Name ungültig ist
+      }
+
       try {
         const response = await axios.post('/kunde', this.kunde);
         console.log('Kunde erfolgreich gespeichert', response.data);
+
+        // Dynamisch die Basis-URL der aktuellen Seite verwenden und nur den Kundenpfad anhängen
+        const kundenUrl = `${window.location.origin}/${this.kunde.kundenname}`;
+        window.open(kundenUrl, '_blank');
       } catch (error) {
         console.error('Fehler beim Speichern des Kunden', error);
+        alert('Fehler beim Speichern des Kunden: ', error);
       }
     }
+
+
   }
 };
 </script>
