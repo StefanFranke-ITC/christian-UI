@@ -15,7 +15,7 @@
       </v-col>
     </v-row>
 
-    <v-row style="width: 100%; height: 700px" class="mx-0">
+    <v-row style="width: 100%; height: 300px" class="mx-0">
       <v-col class="d-flex justify-center" cols="4">
         <div :style="'border: solid 5px '+ kunde.farbe2" style="height: 300px; width: 300px; border-radius: 10px; background-color: #cfcfcf">
           <v-img :src="kunde.icon1"></v-img>
